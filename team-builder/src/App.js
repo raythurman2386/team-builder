@@ -4,10 +4,17 @@ import styled from 'styled-components'
 // Components
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
+// Form
+import Form from './components/form/Form'
+
+// Team
+import Team from './components/team/Team'
 
 function App() {
   // Hook for just the navbar
   const [navBarOpen, setNavBarOpen] = useState(false)
+  // Team hook
+  const [team, setTeam] = useState({})
 
   // // Handler for the nav bar
   const handleNavbar = () => {
@@ -18,7 +25,8 @@ function App() {
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
-        <h1>Team Builder</h1>
+        <Team />
+        <Form />
         <GlobalStyle />
       </Wrapper>
     </div>
