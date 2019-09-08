@@ -28,7 +28,7 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Team />
-        <Form setTeam={setTeam} />
+        <Form setTeam={setTeam} team={team} />
         <GlobalStyle />
       </Wrapper>
     </div>
