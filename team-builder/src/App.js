@@ -9,6 +9,8 @@ import Form from './components/form/Form'
 import Team from './components/team/Team'
 
 function App() {
+  // List for the team members
+  const [teamList] = useState([])
   // Hook for just the navbar
   const [navBarOpen, setNavBarOpen] = useState(false)
   // Team hook
@@ -28,7 +30,7 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Team />
-        <Form setTeam={setTeam} team={team} />
+        <Form teamList={teamList} setTeam={setTeam} team={team} />
         <GlobalStyle />
       </Wrapper>
     </div>

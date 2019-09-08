@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Form = ({ team, setTeam }) => {
+const Form = ({ team, setTeam, teamList }) => {
   // Initial handleChange for the form
   const handleChange = event => {
     const { name, value } = event.target
@@ -9,9 +9,16 @@ const Form = ({ team, setTeam }) => {
     })
   }
 
+  // Handle submit
+  const handleSubmit = event => {
+    event.preventDefault()
+    // teamList.push(team)
+    console.log(team)
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           value={team.name}
@@ -33,6 +40,7 @@ const Form = ({ team, setTeam }) => {
           name='role'
           placeholder='Role'
         />
+        <button>Submit</button>
       </form>
     </div>
   )
