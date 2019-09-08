@@ -21,6 +21,14 @@ function App() {
     setNavBarOpen(!navBarOpen)
   }
 
+  // Initial handleChange for the form
+  const handleChange = event => {
+    const { name, value } = event.target
+    setTeam({
+      [name]: value,
+    })
+  }
+
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
