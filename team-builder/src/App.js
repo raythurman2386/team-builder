@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-
 // Components
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
 // Form
 import Form from './components/form/Form'
-
 // Team
 import Team from './components/team/Team'
 
@@ -14,19 +12,15 @@ function App() {
   // Hook for just the navbar
   const [navBarOpen, setNavBarOpen] = useState(false)
   // Team hook
-  const [team, setTeam] = useState({})
+  const [team, setTeam] = useState({
+    name: '',
+    email: '',
+    role: '',
+  })
 
   // // Handler for the nav bar
   const handleNavbar = () => {
     setNavBarOpen(!navBarOpen)
-  }
-
-  // Initial handleChange for the form
-  const handleChange = event => {
-    const { name, value } = event.target
-    setTeam({
-      [name]: value,
-    })
   }
 
   return (
@@ -34,7 +28,7 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Team />
-        <Form />
+        <Form setTeam={setTeam} />
         <GlobalStyle />
       </Wrapper>
     </div>
