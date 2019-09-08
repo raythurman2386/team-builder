@@ -14,8 +14,9 @@ const Form = ({ team, setTeam, teamList }) => {
   // Handle submit
   const handleSubmit = event => {
     event.preventDefault()
-    // teamList.push(team)
+    teamList.push(team)
     console.log(team)
+    console.log(teamList)
   }
 
   return (
