@@ -61,7 +61,7 @@ const Input = styled.input`
   margin: 10px 0;
   line-height: 2;
   border: none;
-  border-radius: 8px;
+  // border-radius: 8px;
   padding: 5px 10px;
   width: 60%;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const TeamMember = () => {
+const TeamMember = ({ member }) => {
   return (
     <div>
-      <h1>Team Builder</h1>
+      <h1>{member.name}</h1>
+      <h2>{member.email}</h2>
+      <h3>{member.role}</h3>
     </div>
   )
 }
