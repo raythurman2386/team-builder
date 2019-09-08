@@ -1,23 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import { useSpring, animated, config } from "react-spring";
+import React from 'react'
+import styled from 'styled-components'
+import { useSpring, animated, config } from 'react-spring'
 
-import Brand from "./Brand";
-import BurgerMenu from "./BurgerMenu";
-import CollapseMenu from "./CollapseMenu";
+import Brand from './Brand'
+import BurgerMenu from './BurgerMenu'
+import CollapseMenu from './CollapseMenu'
 
 const Navbar = props => {
   const barAnimation = useSpring({
-    from: { transform: "translate3d(0, -10rem, 0)" },
-    transform: "translate3d(0, 0, 0)"
-  });
+    from: { transform: 'translate3d(0, -10rem, 0)' },
+    transform: 'translate3d(0, 0, 0)',
+  })
 
   const linkAnimation = useSpring({
-    from: { transform: "translate3d(0, 30px, 0)", opacity: 0 },
-    to: { transform: "translate3d(0, 0, 0)", opacity: 1 },
+    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 800,
-    config: config.wobbly
-  });
+    config: config.wobbly,
+  })
 
   return (
     <>
@@ -25,10 +25,8 @@ const Navbar = props => {
         <FlexContainer>
           <Brand />
           <NavLinks style={linkAnimation}>
-            <a href="/">Home</a>
-            <a href="/">Blog</a>
-            <a href="/">About</a>
-            <a href="/">Contact</a>
+            <a href='/'>Home</a>
+            <a href='/'>Team</a>
           </NavLinks>
           <BurgerWrapper>
             <BurgerMenu
@@ -43,10 +41,10 @@ const Navbar = props => {
         handleNavbar={props.handleNavbar}
       />
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
 
 const NavBar = styled(animated.nav)`
   position: fixed;
@@ -56,7 +54,7 @@ const NavBar = styled(animated.nav)`
   background: #2d3436;
   z-index: 1;
   font-size: 1.4rem;
-`;
+`
 
 const FlexContainer = styled.div`
   max-width: 120rem;
@@ -65,7 +63,7 @@ const FlexContainer = styled.div`
   padding: 0 2rem;
   justify-content: space-between;
   height: 5rem;
-`;
+`
 
 const NavLinks = styled(animated.ul)`
   justify-self: end;
@@ -91,7 +89,7 @@ const NavLinks = styled(animated.ul)`
       display: none;
     }
   }
-`;
+`
 
 const BurgerWrapper = styled.div`
   margin: auto 0;
@@ -99,4 +97,4 @@ const BurgerWrapper = styled.div`
   @media (min-width: 769px) {
     display: none;
   }
-`;
+`

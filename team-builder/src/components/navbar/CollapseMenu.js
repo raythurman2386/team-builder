@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated } from 'react-spring'
 
 const CollapseMenu = props => {
-  const { open } = useSpring({ open: props.navbarState ? 0 : 1 });
+  const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
 
   if (props.navbarState === true) {
     return (
@@ -13,40 +13,30 @@ const CollapseMenu = props => {
           transform: open
             .interpolate({
               range: [0, 0.2, 0.3, 1],
-              output: [0, -20, 0, -200]
+              output: [0, -20, 0, -200],
             })
-            .interpolate(openValue => `translate3d(0, ${openValue}px, 0`)
+            .interpolate(openValue => `translate3d(0, ${openValue}px, 0`),
         }}
       >
         <NavLinks>
           <li>
-            <a href="/" onClick={props.handleNavbar}>
+            <a href='/' onClick={props.handleNavbar}>
               Home
             </a>
           </li>
           <li>
-            <a href="/" onClick={props.handleNavbar}>
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={props.handleNavbar}>
-              About
-            </a>
-          </li>
-          <li>
-            <a href="/" onClick={props.handleNavbar}>
-              Contact
+            <a href='/' onClick={props.handleNavbar}>
+              Team
             </a>
           </li>
         </NavLinks>
       </CollapseWrapper>
-    );
+    )
   }
-  return null;
-};
+  return null
+}
 
-export default CollapseMenu;
+export default CollapseMenu
 
 const CollapseWrapper = styled(animated.div)`
   background: #2d3436;
@@ -54,7 +44,7 @@ const CollapseWrapper = styled(animated.div)`
   top: 4.5rem;
   left: 0;
   right: 0;
-`;
+`
 
 const NavLinks = styled.ul`
   list-style-type: none;
@@ -77,4 +67,4 @@ const NavLinks = styled.ul`
       border-bottom: 1px solid #fdcb6e;
     }
   }
-`;
+`
