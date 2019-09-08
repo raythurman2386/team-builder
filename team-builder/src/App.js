@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 // Components
 import Navbar from './components/navbar/Navbar'
@@ -16,12 +17,16 @@ function App() {
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
-      <header className='App-header'>
+      <Wrapper>
         <h1>Team Builder</h1>
         <GlobalStyle />
-      </header>
+      </Wrapper>
     </div>
   )
 }
 
 export default App
+
+const Wrapper = styled.div`
+  margin: 60px auto 0;
+`
