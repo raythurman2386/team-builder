@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const TeamMember = ({ member }) => {
   return (
@@ -11,3 +12,5 @@ const TeamMember = ({ member }) => {
 }
 
 export default TeamMember
+
+const TeamMember = styled.div``
