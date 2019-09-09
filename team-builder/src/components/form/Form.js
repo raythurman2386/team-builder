@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Form = ({ team, setTeam, teamList }) => {
+const Form = ({ teamList }) => {
+  // Team hook
+  const [team, setTeam] = useState({
+    name: '',
+    email: '',
+    role: '',
+  })
+
   // Initial handleChange for the form
   const handleChange = event => {
     const { name, value } = event.target

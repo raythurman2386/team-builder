@@ -19,12 +19,6 @@ function App() {
   ])
   // Hook for just the navbar
   const [navBarOpen, setNavBarOpen] = useState(false)
-  // Team hook
-  const [team, setTeam] = useState({
-    name: '',
-    email: '',
-    role: '',
-  })
 
   // // Handler for the nav bar
   const handleNavbar = () => {
@@ -36,7 +30,7 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Team teamList={teamList} />
-        <Form teamList={teamList} setTeam={setTeam} team={team} />
+        <Form teamList={teamList} />
         <GlobalStyle />
       </Wrapper>
     </div>

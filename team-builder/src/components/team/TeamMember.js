@@ -13,4 +13,4 @@ const TeamMember = ({ member }) => {
 
 export default TeamMember
 
-const TeamMember = styled.div``
+const TeamMemberCard = styled.div``
