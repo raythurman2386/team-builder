@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Form = ({ teamList }) => {
+  // make an initial team to reset the form to
+  const initialTeam = { name: '', email: '', role: '' }
   // Team hook
-  const [team, setTeam] = useState({
-    name: '',
-    email: '',
-    role: '',
-  })
+  const [team, setTeam] = useState(initialTeam)
 
   // Initial handleChange for the form
   const handleChange = event => {
@@ -21,9 +19,14 @@ const Form = ({ teamList }) => {
   // Handle submit
   const handleSubmit = event => {
     event.preventDefault()
-    teamList.push(team)
-    console.log(team)
+    teamList.push(...teamList, team)
     console.log(teamList)
+
+    resetForm()
+  }
+
+  const resetForm = () => {
+    setTeam(initialTeam)
   }
 
   return (
