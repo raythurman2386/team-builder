@@ -21,9 +21,9 @@ const TeamMemberCard = styled.div`
   padding: 1.5rem;
   box-shadow: 0 10px 6px -6px #777;
   margin: 2rem auto;
-  cursor: pointer;
   :hover {
-    transform: scale(0.98);
+    box-shadow: 0 10px 16px -6px #777;
+    transition: .4s ease;
   }
 
   h1 {
@@ -45,14 +45,17 @@ const TeamMemberCard = styled.div`
 
   button {
     padding: 6px 12px;
+    font-size: 1.4rem;
+    font-weight: 500;
     border: none;
     box-shadow: 0 5px 5px #777;
     cursor: pointer;
     background-color: #333;
     color: white;
     :hover {
-      background-color: red;
-      transition: 1s ease;
+      color: #fdcb6e;
+      border-bottom: 1px solid #fdcb6e;
+      transition: .5s ease;
     }
   }
 `;
