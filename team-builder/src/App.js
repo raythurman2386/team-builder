@@ -1,48 +1,52 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Route, Switch } from 'react-router-dom'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Route, Switch } from 'react-router-dom';
 // Components
-import Navbar from './components/navbar/Navbar'
-import GlobalStyle from './styles/Global'
+import Navbar from './components/navbar/Navbar';
+import GlobalStyle from './styles/Global';
 // Form
-import Form from './components/form/Form'
+import Form from './components/form/Form';
 // Team
-import Team from './components/team/Team'
+import Team from './components/team/Team';
 
 function App() {
   // List for the team members
-  const [teamList, setTeamList] = useState([
+  const [ teamList, setTeamList ] = useState([
     {
-      name: 'Ray',
-      email: 'raythurman2386@somewhere.com',
-      role: 'frontend',
+      name  : 'Ray',
+      email : 'raythurman2386@somewhere.com',
+      role  : 'frontend',
     },
-  ])
+  ]);
   // Hook for just the navbar
-  const [navBarOpen, setNavBarOpen] = useState(false)
+  const [ navBarOpen, setNavBarOpen ] = useState(false);
 
   // // Handler for the nav bar
   const handleNavbar = () => {
-    setNavBarOpen(!navBarOpen)
-  }
+    setNavBarOpen(!navBarOpen);
+  };
 
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Switch>
-          <Route exact path="/" render={(props) => <Team {...props} teamList={teamList} />} />
-          <Route path="/add-member" render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />} />
+          <Route exact path='/' render={(props) => <Team {...props} teamList={teamList} />} />
+          <Route
+            path='/add-member'
+            render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />}
+          />
+          <Route path='/edit-member/:id' render={(props) => <EditTeamMember {...props} />} />
         </Switch>
         <GlobalStyle />
       </Wrapper>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
 
 const Wrapper = styled.div`
-      max-width: 1120px;
-      margin: 60px auto 0;
-    `
+  max-width: 1120px;
+  margin: 60px auto 0;
+`;
