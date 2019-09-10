@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { useSpring, animated, config } from 'react-spring'
 
 import Brand from './Brand'
@@ -25,8 +26,8 @@ const Navbar = props => {
         <FlexContainer>
           <Brand />
           <NavLinks style={linkAnimation}>
-            <a href='/'>Home</a>
-            <a href='/'>Team</a>
+            <Link to='/'>Home</Link>
+            <Link to='/add-member'>Add Team Member</Link>
           </NavLinks>
           <BurgerWrapper>
             <BurgerMenu
