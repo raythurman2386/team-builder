@@ -18,8 +18,21 @@ const TeamMemberCard = styled.div`
   min-height: 250px;
   background-color: #f2f2f2;
   padding: 1.5rem;
-  -webkit-box-shadow: 0 10px 6px -6px #777;
-  -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
   margin: 2rem auto;
+  cursor: pointer;
+  :hover {
+    transform: scale(0.98);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 2rem 0;
+  }
 `
