@@ -30,7 +30,7 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Team teamList={teamList} />
-        <Form teamList={teamList} />
+        <Form teamList={teamList} setTeamList={setTeamList} />
         <GlobalStyle />
       </Wrapper>
     </div>

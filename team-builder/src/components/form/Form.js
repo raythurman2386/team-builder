@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Form = ({ teamList }) => {
+const Form = ({ teamList, setTeamList }) => {
   // make an initial team to reset the form to
   const initialTeam = { name: '', email: '', role: '' }
   // Team hook
@@ -19,7 +19,7 @@ const Form = ({ teamList }) => {
   // Handle submit
   const handleSubmit = event => {
     event.preventDefault()
-    teamList.push(...teamList, team)
+    setTeamList([...teamList, team])
     console.log(teamList)
 
     resetForm()
