@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const TeamMember = ({ member }) => {
   return (
@@ -7,11 +7,12 @@ const TeamMember = ({ member }) => {
       <h1>{member.name}</h1>
       <h2>{member.email}</h2>
       <h3>{member.role}</h3>
+      <button>Edit</button>
     </TeamMemberCard>
-  )
-}
+  );
+};
 
-export default TeamMember
+export default TeamMember;
 
 const TeamMemberCard = styled.div`
   width: 400px;
@@ -41,4 +42,17 @@ const TeamMemberCard = styled.div`
     margin: 4rem 0;
     font-size: 2rem;
   }
-`
+
+  button {
+    padding: 6px 12px;
+    border: none;
+    box-shadow: 0 5px 5px #777;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    :hover {
+      background-color: red;
+      transition: 1s ease;
+    }
+  }
+`;
