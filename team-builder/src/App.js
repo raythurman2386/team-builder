@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Route, Switch } from 'react-router-dom'
 // Components
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
@@ -29,8 +30,10 @@ function App() {
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
-        <Team teamList={teamList} />
-        <Form teamList={teamList} setTeamList={setTeamList} />
+        <Switch>
+          <Route exact path="/" render={(props) => <Team {...props} teamList={teamList} />} />
+          <Route path="/add-member" render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />} />
+        </Switch>
         <GlobalStyle />
       </Wrapper>
     </div>
@@ -40,6 +43,6 @@ function App() {
 export default App
 
 const Wrapper = styled.div`
-  max-width: 1120px;
-  margin: 60px auto 0;
-`
+      max-width: 1120px;
+      margin: 60px auto 0;
+    `
