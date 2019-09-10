@@ -17,12 +17,11 @@ const Team = ({ teamList }) => {
 export default Team
 
 const TeamWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-column-gap: 10px;
-  grid-row-gap: 15px;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
   min-height: 20rem;
   margin: auto;
+  width: 100%;
 `

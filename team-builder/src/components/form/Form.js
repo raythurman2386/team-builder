@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 const Form = ({ teamList, setTeamList }) => {
   // make an initial team to reset the form to
-  const initialTeam = { name: '', email: '', role: '' }
-  // Team hook
-  const [team, setTeam] = useState(initialTeam)
+  const initialForm = { name: '', email: '', role: '' }
+  // Form hook
+  const [form, setForm] = useState(initialForm)
 
   // Initial handleChange for the form
   const handleChange = event => {
     const { name, value } = event.target
-    setTeam({
-      ...team,
+    setForm({
+      ...form,
       [name]: value,
     })
   }
@@ -19,7 +19,7 @@ const Form = ({ teamList, setTeamList }) => {
   // Handle submit
   const handleSubmit = event => {
     event.preventDefault()
-    setTeamList([...teamList, team])
+    setTeamList([...teamList, form])
 
     // resets form as soon as it's submit
     resetForm()
@@ -27,7 +27,7 @@ const Form = ({ teamList, setTeamList }) => {
 
   // function to reset the form
   const resetForm = () => {
-    setTeam(initialTeam)
+    setForm(initialForm)
   }
 
   return (
@@ -35,21 +35,21 @@ const Form = ({ teamList, setTeamList }) => {
       <FormWrapper onSubmit={handleSubmit}>
         <Input
           type='text'
-          value={team.name}
+          value={form.name}
           onChange={handleChange}
           name='name'
           placeholder='Name'
         />
         <Input
           type='text'
-          value={team.email}
+          value={form.email}
           onChange={handleChange}
           name='email'
           placeholder='Email'
         />
         <Input
           type='text'
-          value={team.role}
+          value={form.role}
           onChange={handleChange}
           name='role'
           placeholder='Role'
