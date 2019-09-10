@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Form = ({ teamList, setTeamList }) => {
+const Form = ({ teamList, setTeamList, history }) => {
   // make an initial team to reset the form to
   const initialForm = { name: '', email: '', role: '' }
   // Form hook
@@ -20,7 +20,8 @@ const Form = ({ teamList, setTeamList }) => {
   const handleSubmit = event => {
     event.preventDefault()
     setTeamList([...teamList, form])
-
+    // route to the homepage on submit
+    history.push("/")
     // resets form as soon as it's submit
     resetForm()
   }

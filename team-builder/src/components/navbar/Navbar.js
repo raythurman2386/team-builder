@@ -8,11 +8,13 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 
 const Navbar = props => {
+  // Sets up the page load animation
   const barAnimation = useSpring({
     from: { transform: 'translate3d(0, -10rem, 0)' },
     transform: 'translate3d(0, 0, 0)',
   })
 
+  // sets up the link animation
   const linkAnimation = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },

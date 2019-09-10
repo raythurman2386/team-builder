@@ -8,6 +8,7 @@ import { useSpring, animated } from 'react-spring'
 const CollapseMenu = props => {
   const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
 
+  // if the navbar is collapsed, returns the hamburger menu
   if (props.navbarState === true) {
     return (
       <CollapseWrapper
@@ -35,6 +36,7 @@ const CollapseMenu = props => {
       </CollapseWrapper>
     )
   }
+  // returns null if the navbar is not collapsed
   return null
 }
 
