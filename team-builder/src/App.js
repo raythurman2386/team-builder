@@ -10,7 +10,7 @@ import Team from './components/team/Team'
 
 function App() {
   // List for the team members
-  const [teamList] = useState([
+  const [teamList, setTeamList] = useState([
     {
       name: 'Ray',
       email: 'raythurman2386@somewhere.com',

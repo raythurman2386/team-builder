@@ -35,4 +35,10 @@ const TeamMemberCard = styled.div`
     text-align: center;
     margin: 2rem 0;
   }
+
+  h3 {
+    text-align: center;
+    margin: 4rem 0;
+    font-size: 2rem;
+  }
 `
