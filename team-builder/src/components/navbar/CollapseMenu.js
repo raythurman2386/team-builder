@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
+// import for react spring
 import { useSpring, animated } from 'react-spring'
 
 const CollapseMenu = props => {
   const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
 
+  // if the navbar is collapsed, returns the hamburger menu
   if (props.navbarState === true) {
     return (
       <CollapseWrapper
@@ -20,19 +23,20 @@ const CollapseMenu = props => {
       >
         <NavLinks>
           <li>
-            <a href='/' onClick={props.handleNavbar}>
+            <Link to='/' onClick={props.handleNavbar}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/' onClick={props.handleNavbar}>
-              Team
-            </a>
+            <Link to='/add-member' onClick={props.handleNavbar}>
+              Add Team Member
+            </Link>
           </li>
         </NavLinks>
       </CollapseWrapper>
     )
   }
+  // returns null if the navbar is not collapsed
   return null
 }
 
