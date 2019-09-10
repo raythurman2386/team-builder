@@ -35,7 +35,7 @@ const Form = ({ teamList, setTeamList, history }) => {
     <div>
       <FormWrapper onSubmit={handleSubmit}>
         <Input type='text' value={form.name} onChange={handleChange} name='name' placeholder='Name' required />
-        <Input type='text' value={form.email} onChange={handleChange} name='email' placeholder='Email' required />
+        <Input type='email' value={form.email} onChange={handleChange} name='email' placeholder='Email' required />
         <Input type='text' value={form.role} onChange={handleChange} name='role' placeholder='Role' required />
         <ButtonWrapper>Submit</ButtonWrapper>
       </FormWrapper>
