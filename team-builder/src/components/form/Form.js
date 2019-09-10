@@ -20,11 +20,12 @@ const Form = ({ teamList, setTeamList }) => {
   const handleSubmit = event => {
     event.preventDefault()
     setTeamList([...teamList, team])
-    console.log(teamList)
 
+    // resets form as soon as it's submit
     resetForm()
   }
 
+  // function to reset the form
   const resetForm = () => {
     setTeam(initialTeam)
   }

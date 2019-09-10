@@ -18,8 +18,11 @@ export default Team
 
 const TeamWrapper = styled.div`
   display: grid;
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+
   min-height: 20rem;
   margin: auto;
 `

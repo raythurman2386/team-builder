@@ -14,7 +14,7 @@ const TeamMember = ({ member }) => {
 export default TeamMember
 
 const TeamMemberCard = styled.div`
-  width: 100%;
+  width: 400px;
   min-height: 250px;
   background-color: #f2f2f2;
   padding: 1.5rem;
