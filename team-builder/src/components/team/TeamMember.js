@@ -49,8 +49,10 @@ const TeamMemberCard = styled.div`
     font-size: 2rem;
   }
 
-  a {
+  a,
+  button {
     padding: 6px 12px;
+    margin-left: 10px;
     font-size: 1.4rem;
     font-weight: 500;
     border: none;
