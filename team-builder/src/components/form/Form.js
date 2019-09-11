@@ -11,12 +11,11 @@ const Form = (props) => {
     const member = props.teamList.find((teamMember) => {
       return teamMember.id === Number(props.match.params.id);
     });
-    console.log(member);
     initialForm = {
-      id: member.id,
-      name: member.name,
-      email: member.email,
-      role: member.role,
+      id    : member.id,
+      name  : member.name,
+      email : member.email,
+      role  : member.role,
     };
   }
 
