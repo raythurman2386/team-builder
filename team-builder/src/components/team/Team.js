@@ -7,7 +7,9 @@ import TeamMember from './TeamMember';
 const Team = (props) => {
   return (
     <TeamWrapper>
-      {props.teamList.map((team, index) => <TeamMember key={team.id} member={team} handleEdit={props.handleEdit} />)}
+      {props.teamList.map((team, index) => (
+        <TeamMember key={team.id} member={team} handleEdit={props.handleEdit} />
+      ))}
     </TeamWrapper>
   );
 };

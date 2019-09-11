@@ -49,9 +49,30 @@ const Form = (props) => {
   return (
     <div>
       <FormWrapper onSubmit={handleSubmit}>
-        <Input type='text' value={form.name} onChange={handleChange} name='name' placeholder='Name' required />
-        <Input type='email' value={form.email} onChange={handleChange} name='email' placeholder='Email' required />
-        <Input type='text' value={form.role} onChange={handleChange} name='role' placeholder='Role' required />
+        <Input
+          type='text'
+          value={form.name}
+          onChange={handleChange}
+          name='name'
+          placeholder='Name'
+          required
+        />
+        <Input
+          type='email'
+          value={form.email}
+          onChange={handleChange}
+          name='email'
+          placeholder='Email'
+          required
+        />
+        <Input
+          type='text'
+          value={form.role}
+          onChange={handleChange}
+          name='role'
+          placeholder='Role'
+          required
+        />
         <ButtonWrapper>Submit</ButtonWrapper>
       </FormWrapper>
     </div>
@@ -74,7 +95,8 @@ const Input = styled.input`
   // border-radius: 8px;
   padding: 5px 10px;
   width: 60%;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
 `;
 
 const ButtonWrapper = styled.button`
@@ -83,9 +105,11 @@ const ButtonWrapper = styled.button`
   padding: 8px 14px;
   background-color: lightskyblue;
   border: none;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
 
   &:hover {
-    box-shadow: 0 -1px 10px #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 -1px 10px #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+      0 2px 10px rgba(0, 0, 0, 0.24);
   }
 `;

@@ -39,7 +39,13 @@ function App() {
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Switch>
-          <Route exact path='/' render={(props) => <Team {...props} teamList={teamList} handleEdit={handleEdit} />} />
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <Team {...props} teamList={teamList} handleEdit={handleEdit} />
+            )}
+          />
           <Route
             path='/add-member'
             render={(props) => (
