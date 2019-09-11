@@ -4,8 +4,12 @@ import styled from 'styled-components';
 // Team member
 import TeamMember from './TeamMember';
 
-const Team = ({ teamList }) => {
-  return <TeamWrapper>{teamList.map((team, index) => <TeamMember key={team.id} member={team} />)}</TeamWrapper>;
+const Team = (props) => {
+  return (
+    <TeamWrapper>
+      {props.teamList.map((team, index) => <TeamMember key={team.id} member={team} handleEdit={props.handleEdit} />)}
+    </TeamWrapper>
+  );
 };
 
 export default Team;

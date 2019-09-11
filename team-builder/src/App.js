@@ -29,12 +29,17 @@ function App() {
     setNavBarOpen(!navBarOpen);
   };
 
+  // Handler for the Edit
+  const handleEdit = () => {
+    setIsEditable(!isEditable);
+  };
+
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
       <Wrapper>
         <Switch>
-          <Route exact path='/' render={(props) => <Team {...props} teamList={teamList} />} />
+          <Route exact path='/' render={(props) => <Team {...props} teamList={teamList} handleEdit={handleEdit} />} />
           <Route
             path='/add-member'
             render={(props) => (
@@ -52,7 +57,7 @@ function App() {
             render={(props) => (
               <Form
                 {...props}
-                setIsEditable={setIsEditable(true)}
+                setIsEditable={setIsEditable}
                 isEditable={isEditable}
                 teamList={teamList}
                 setTeamList={setTeamList}
