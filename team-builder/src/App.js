@@ -11,6 +11,8 @@ import Team from './components/team/Team';
 import EditTeamMember from './components/team/EditTeamMember';
 
 function App() {
+  // hook for editable
+  const [ isEditable, setIsEditable ] = useState(false);
   // List for the team members
   const [ teamList, setTeamList ] = useState([
     {

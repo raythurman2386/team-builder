@@ -8,7 +8,7 @@ const TeamMember = ({ member }) => {
       <h1>{member.name}</h1>
       <h2>{member.email}</h2>
       <h3>{member.role}</h3>
-      {/* <Link to={`/edit-member/${member.id}`}>Edit</Link> */}
+      <Link to={`/edit-member/${member.id}`}>Edit</Link>
     </TeamMemberCard>
   );
 };
