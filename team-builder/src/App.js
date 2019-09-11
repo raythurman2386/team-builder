@@ -34,6 +34,11 @@ function App() {
     setIsEditable(!isEditable);
   };
 
+  const handleDelete = (id) => {
+    let filteredList = teamList.filter((member) => member.id !== id);
+    setTeamList([ ...filteredList ]);
+  };
+
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
@@ -43,7 +48,12 @@ function App() {
             exact
             path='/'
             render={(props) => (
-              <Team {...props} teamList={teamList} handleEdit={handleEdit} />
+              <Team
+                {...props}
+                teamList={teamList}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             )}
           />
           <Route

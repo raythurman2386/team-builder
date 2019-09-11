@@ -11,6 +11,9 @@ const TeamMember = (props) => {
       <Link to={`/edit-member/${props.member.id}`} onClick={props.handleEdit}>
         Edit
       </Link>
+      <button onClick={() => props.handleDelete(props.member.id)}>
+        Delete
+      </button>
     </TeamMemberCard>
   );
 };

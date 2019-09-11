@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = (props) => {
-  let id = props.teamList.length + 1;
+  let id = 1 || props.teamList.length + 1;
   // make an initial team to reset the form to
   let initialForm;
   if (!props.isEditable) {
@@ -34,7 +34,11 @@ const Form = (props) => {
   // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setTeamList([ ...props.teamList, form ]);
+    if (props.teamList === []) {
+      props.setTeamList([ form ]);
+    } else {
+      props.setTeamList([ ...props.teamList, form ]);
+    }
 
     if (props.isEditable) {
       props.setIsEditable(!props.isEditable);
