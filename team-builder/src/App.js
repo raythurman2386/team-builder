@@ -8,7 +8,6 @@ import GlobalStyle from './styles/Global';
 import Form from './components/form/Form';
 // Team
 import Team from './components/team/Team';
-import EditTeamMember from './components/team/EditTeamMember';
 
 function App() {
   // hook for editable
@@ -60,18 +59,6 @@ function App() {
               />
             )}
           />
-          {/* <Route
-            path='/edit-member/:id'
-            render={(props) => (
-              <EditTeamMember
-                {...props}
-                isEditable={isEditable}
-                setIsEditable={setIsEditable}
-                teamList={teamList}
-                setTeamList={setTeamList}
-              />
-            )}
-          /> */}
         </Switch>
         <GlobalStyle />
       </Wrapper>
