@@ -8,6 +8,7 @@ import GlobalStyle from './styles/Global';
 import Form from './components/form/Form';
 // Team
 import Team from './components/team/Team';
+import EditTeamMember from './components/team/EditTeamMember';
 
 function App() {
   // List for the team members
