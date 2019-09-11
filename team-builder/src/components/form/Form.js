@@ -5,7 +5,10 @@ const Form = (props) => {
   // make an initial team to reset the form to
   let initialForm;
   if (props.isEditable) {
-    initialForm = { name: props.member.name, email: props.member.email, role: props.member.role };
+    const member = props.teamList.find((teamMember) => {
+      return teamMember.id === Number(props.match.params.id);
+    });
+    initialForm = { name: member.name, email: member.email, role: member.role };
   } else {
     initialForm = { name: '', email: '', role: '' };
   }
@@ -27,7 +30,7 @@ const Form = (props) => {
     event.preventDefault();
     props.setTeamList([ ...props.teamList, form ]);
     // route to the homepage on submit
-    // props.history.push('/');
+    props.history.push('/');
     // resets form as soon as it's submit
     resetForm();
   };

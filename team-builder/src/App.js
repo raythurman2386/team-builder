@@ -51,7 +51,7 @@ function App() {
           <Route
             path='/edit-member/:id'
             render={(props) => (
-              <EditTeamMember
+              <Form
                 {...props}
                 isEditable={isEditable}
                 setIsEditable={setIsEditable}
@@ -60,6 +60,18 @@ function App() {
               />
             )}
           />
+          {/* <Route
+            path='/edit-member/:id'
+            render={(props) => (
+              <EditTeamMember
+                {...props}
+                isEditable={isEditable}
+                setIsEditable={setIsEditable}
+                teamList={teamList}
+                setTeamList={setTeamList}
+              />
+            )}
+          /> */}
         </Switch>
         <GlobalStyle />
       </Wrapper>
