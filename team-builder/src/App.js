@@ -10,6 +10,8 @@ import Form from './components/form/Form';
 import Team from './components/team/Team';
 
 function App() {
+  // Hook for just the navbar
+  const [ navBarOpen, setNavBarOpen ] = useState(false);
   // hook for editable
   const [ isEditable, setIsEditable ] = useState(false);
   // List for the team members
@@ -21,8 +23,6 @@ function App() {
       role  : 'frontend',
     },
   ]);
-  // Hook for just the navbar
-  const [ navBarOpen, setNavBarOpen ] = useState(false);
 
   // // Handler for the nav bar
   const handleNavbar = () => {
