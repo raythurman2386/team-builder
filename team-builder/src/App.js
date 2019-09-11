@@ -37,7 +37,7 @@ function App() {
             path='/add-member'
             render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />}
           />
-          <Route path='/edit-member/:id' render={(props) => <EditTeamMember {...props} />} />
+          <Route path='/edit-member/:name' render={(props) => <EditTeamMember {...props} />} />
         </Switch>
         <GlobalStyle />
       </Wrapper>
