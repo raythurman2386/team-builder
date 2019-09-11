@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Form = ({ teamList, setTeamList, history }) => {
+const Form = (props) => {
   // make an initial team to reset the form to
-  const initialForm = { name: '', email: '', role: '' };
+  let initialForm;
+  if (props.isEditable) {
+    initialForm = { name: props.member.name, email: props.member.email, role: props.member.role };
+  } else {
+    initialForm = { name: '', email: '', role: '' };
+  }
+
   // Form hook
   const [ form, setForm ] = useState(initialForm);
 
@@ -19,9 +25,9 @@ const Form = ({ teamList, setTeamList, history }) => {
   // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTeamList([ ...teamList, form ]);
+    props.setTeamList([ ...props.teamList, form ]);
     // route to the homepage on submit
-    history.push('/');
+    // props.history.push('/');
     // resets form as soon as it's submit
     resetForm();
   };

@@ -15,7 +15,7 @@ const EditTeamMember = (props) => {
   return (
     <div>
       <TeamMember member={member} />
-      <Form isEditable={props.isEditable} member={member} />
+      <Form isEditable={props.isEditable} member={member} teamList={props.teamList} setTeamList={props.setTeamList} />
     </div>
   );
 };
