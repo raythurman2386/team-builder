@@ -34,6 +34,9 @@ const Form = (props) => {
 
     if (props.isEditable) {
       props.setIsEditable(!props.isEditable);
+      // filter then push
+      let filteredList = props.teamList.filter((item) => item.id !== form.id);
+      props.setTeamList([ ...filteredList, form ]);
     }
     // route to the homepage on submit
     props.history.push('/');
