@@ -38,11 +38,27 @@ function App() {
           <Route exact path='/' render={(props) => <Team {...props} teamList={teamList} />} />
           <Route
             path='/add-member'
-            render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />}
+            render={(props) => (
+              <Form
+                {...props}
+                isEditable={isEditable}
+                setIsEditable={setIsEditable}
+                teamList={teamList}
+                setTeamList={setTeamList}
+              />
+            )}
           />
           <Route
             path='/edit-member/:id'
-            render={(props) => <EditTeamMember {...props} teamList={teamList} setTeamList={setTeamList} />}
+            render={(props) => (
+              <EditTeamMember
+                {...props}
+                isEditable={isEditable}
+                setIsEditable={setIsEditable}
+                teamList={teamList}
+                setTeamList={setTeamList}
+              />
+            )}
           />
         </Switch>
         <GlobalStyle />

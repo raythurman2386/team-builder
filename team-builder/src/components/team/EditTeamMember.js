@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Components
 import TeamMember from './TeamMember';
@@ -9,11 +9,13 @@ const EditTeamMember = (props) => {
     return teamMember.id === Number(props.match.params.id);
   });
 
+  props.setIsEditable(true);
+
   console.log(props);
   return (
     <div>
       <TeamMember member={member} />
-      <Form />
+      <Form isEditable={props.isEditable} member={member} />
     </div>
   );
 };
