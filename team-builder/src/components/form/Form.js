@@ -9,6 +9,7 @@ const Form = (props) => {
     const member = props.teamList.find((teamMember) => {
       return teamMember.id === Number(props.match.params.id);
     });
+    console.log(member);
     initialForm = { name: member.name, email: member.email, role: member.role };
   } else {
     initialForm = { id: id + 1, name: '', email: '', role: '' };

@@ -54,7 +54,7 @@ function App() {
               <Form
                 {...props}
                 isEditable={isEditable}
-                setIsEditable={setIsEditable}
+                setIsEditable={setIsEditable(true)}
                 teamList={teamList}
                 setTeamList={setTeamList}
               />
