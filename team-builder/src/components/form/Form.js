@@ -31,6 +31,10 @@ const Form = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.setTeamList([ ...props.teamList, form ]);
+
+    if (props.isEditable) {
+      props.setIsEditable(true);
+    }
     // route to the homepage on submit
     props.history.push('/');
     // resets form as soon as it's submit
