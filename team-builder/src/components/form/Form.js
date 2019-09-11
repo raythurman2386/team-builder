@@ -12,7 +12,12 @@ const Form = (props) => {
       return teamMember.id === Number(props.match.params.id);
     });
     console.log(member);
-    initialForm = { name: member.name, email: member.email, role: member.role };
+    initialForm = {
+      id: member.id,
+      name: member.name,
+      email: member.email,
+      role: member.role,
+    };
   }
 
   // Form hook
@@ -36,6 +41,7 @@ const Form = (props) => {
       props.setIsEditable(!props.isEditable);
       // filter then push
       let filteredList = props.teamList.filter((item) => item.id !== form.id);
+      // Set the edited form to the new list
       props.setTeamList([ ...filteredList, form ]);
     }
     // route to the homepage on submit
