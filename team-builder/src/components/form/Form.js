@@ -5,14 +5,14 @@ const Form = (props) => {
   let id = 1;
   // make an initial team to reset the form to
   let initialForm;
-  if (props.isEditable) {
+  if (!props.isEditable) {
+    initialForm = { id: id + 1, name: '', email: '', role: '' };
+  } else {
     const member = props.teamList.find((teamMember) => {
       return teamMember.id === Number(props.match.params.id);
     });
     console.log(member);
     initialForm = { name: member.name, email: member.email, role: member.role };
-  } else {
-    initialForm = { id: id + 1, name: '', email: '', role: '' };
   }
 
   // Form hook

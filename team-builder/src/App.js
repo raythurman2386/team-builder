@@ -53,8 +53,8 @@ function App() {
             render={(props) => (
               <Form
                 {...props}
-                isEditable={isEditable}
                 setIsEditable={setIsEditable(true)}
+                isEditable={isEditable}
                 teamList={teamList}
                 setTeamList={setTeamList}
               />
