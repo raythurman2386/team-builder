@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = (props) => {
+  let id = 1;
   // make an initial team to reset the form to
   let initialForm;
   if (props.isEditable) {
@@ -10,7 +11,7 @@ const Form = (props) => {
     });
     initialForm = { name: member.name, email: member.email, role: member.role };
   } else {
-    initialForm = { name: '', email: '', role: '' };
+    initialForm = { id: id + 1, name: '', email: '', role: '' };
   }
 
   // Form hook
