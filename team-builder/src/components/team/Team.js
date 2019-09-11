@@ -1,20 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 // Team member
-import TeamMember from './TeamMember'
+import TeamMember from './TeamMember';
 
 const Team = ({ teamList }) => {
-  return (
-    <TeamWrapper>
-      {teamList.map((team, index) => (
-        <TeamMember key={index} member={team} />
-      ))}
-    </TeamWrapper>
-  )
-}
+  return <TeamWrapper>{teamList.map((team, index) => <TeamMember key={team.id} member={team} />)}</TeamWrapper>;
+};
 
-export default Team
+export default Team;
 
 const TeamWrapper = styled.div`
   display: flex;
@@ -24,4 +18,4 @@ const TeamWrapper = styled.div`
   min-height: 20rem;
   margin: auto;
   width: 100%;
-`
+`;

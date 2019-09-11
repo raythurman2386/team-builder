@@ -14,6 +14,7 @@ function App() {
   // List for the team members
   const [ teamList, setTeamList ] = useState([
     {
+      id    : 1,
       name  : 'Ray',
       email : 'raythurman2386@somewhere.com',
       role  : 'frontend',
@@ -37,7 +38,10 @@ function App() {
             path='/add-member'
             render={(props) => <Form {...props} teamList={teamList} setTeamList={setTeamList} />}
           />
-          <Route path='/edit-member/:name' render={(props) => <EditTeamMember {...props} />} />
+          <Route
+            path='/edit-member/:id'
+            render={(props) => <EditTeamMember {...props} teamList={teamList} setTeamList={setTeamList} />}
+          />
         </Switch>
         <GlobalStyle />
       </Wrapper>

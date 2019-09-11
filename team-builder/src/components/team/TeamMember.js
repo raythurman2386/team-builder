@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const TeamMember = ({ member }) => {
   return (
@@ -7,7 +8,7 @@ const TeamMember = ({ member }) => {
       <h1>{member.name}</h1>
       <h2>{member.email}</h2>
       <h3>{member.role}</h3>
-      <button>Edit</button>
+      {/* <Link to={`/edit-member/${member.id}`}>Edit</Link> */}
     </TeamMemberCard>
   );
 };
@@ -43,7 +44,7 @@ const TeamMemberCard = styled.div`
     font-size: 2rem;
   }
 
-  button {
+  a {
     padding: 6px 12px;
     font-size: 1.4rem;
     font-weight: 500;
