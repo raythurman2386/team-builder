@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Form, Field, withFormik } from 'formik'
+import * as Yup from 'yup'
 
-const Form = (props) => {
+const TeamForm = (props, { errors, touched, status }) => {
   let id = 1 || props.teamList.length + 1;
   // make an initial team to reset the form to
   let initialForm;
@@ -12,75 +14,57 @@ const Form = (props) => {
       return teamMember.id === Number(props.match.params.id);
     });
     initialForm = {
-      id    : member.id,
-      name  : member.name,
-      email : member.email,
-      role  : member.role,
+      id: member.id,
+      name: member.name,
+      email: member.email,
+      role: member.role,
     };
   }
 
-  // Form hook
-  const [ form, setForm ] = useState(initialForm);
-
-  // Initial handleChange for the form
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setForm({
-      ...form,
-      [name] : value,
-    });
-  };
-
   // Handle submit
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (props.teamList === []) {
-      props.setTeamList([ form ]);
-    } else {
-      props.setTeamList([ ...props.teamList, form ]);
-    }
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (props.teamList === []) {
+  //     props.setTeamList([form]);
+  //   } else {
+  //     props.setTeamList([...props.teamList, form]);
+  //   }
 
-    if (props.isEditable) {
-      props.setIsEditable(!props.isEditable);
-      // filter then push
-      let filteredList = props.teamList.filter((item) => item.id !== form.id);
-      // Set the edited form to the new list
-      props.setTeamList([ ...filteredList, form ]);
-    }
-    // route to the homepage on submit
-    props.history.push('/');
-    // resets form as soon as it's submit
-    resetForm();
-  };
+  //   if (props.isEditable) {
+  //     props.setIsEditable(!props.isEditable);
+  //     // filter then push
+  //     let filteredList = props.teamList.filter((item) => item.id !== form.id);
+  //     // Set the edited form to the new list
+  //     props.setTeamList([...filteredList, form]);
+  //   }
+  //   // route to the homepage on submit
+  //   props.history.push('/');
+  //   // resets form as soon as it's submit
+  //   resetForm();
+  // };
 
   // function to reset the form
-  const resetForm = () => {
-    setForm(initialForm);
-  };
+  // const resetForm = () => {
+  //   setForm(initialForm);
+  // };
 
   return (
     <div>
-      <FormWrapper onSubmit={handleSubmit}>
+      <FormWrapper>
         <Input
           type='text'
-          value={form.name}
-          onChange={handleChange}
           name='name'
           placeholder='Name'
           required
         />
         <Input
           type='email'
-          value={form.email}
-          onChange={handleChange}
           name='email'
           placeholder='Email'
           required
         />
         <Input
           type='text'
-          value={form.role}
-          onChange={handleChange}
           name='role'
           placeholder='Role'
           required
@@ -91,16 +75,37 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default withFormik({
+  mapPropsToValues: ({ name, email, role }) => {
+    return {
+      name: name || '',
+      email: email || '',
+      role: role || '',
+    }
+  },
 
-const FormWrapper = styled.form`
+  // Validation
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required(),
+    email: Yup.string().email().required(),
+    role: Yup.string().required(),
+  }),
+
+  // handleSubmit
+  handleSubmit(values, { setStatus }) {
+    console.log(values)
+    setStatus(values)
+  }
+})(TeamForm);
+
+const FormWrapper = styled(Form)`
   display: flex;
   flex-direction: column;
   margin: auto;
   align-items: center;
 `;
 
-const Input = styled.input`
+const Input = styled(Field)`
   margin: 10px 0;
   line-height: 2;
   border: none;
