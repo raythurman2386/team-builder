@@ -5,22 +5,22 @@ import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import GlobalStyle from './styles/Global';
 // Form
-import Form from './components/form/Form';
+import TeamForm from './components/form/Form';
 // Team
 import Team from './components/team/Team';
 
 function App() {
   // Hook for just the navbar
-  const [ navBarOpen, setNavBarOpen ] = useState(false);
+  const [navBarOpen, setNavBarOpen] = useState(false);
   // hook for editable
-  const [ isEditable, setIsEditable ] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
   // List for the team members
-  const [ teamList, setTeamList ] = useState([
+  const [teamList, setTeamList] = useState([
     {
-      id    : 1,
-      name  : 'Ray',
-      email : 'raythurman2386@somewhere.com',
-      role  : 'frontend',
+      id: 1,
+      name: 'Ray',
+      email: 'raythurman2386@somewhere.com',
+      role: 'frontend',
     },
   ]);
 
@@ -36,7 +36,7 @@ function App() {
 
   const handleDelete = (id) => {
     let filteredList = teamList.filter((member) => member.id !== id);
-    setTeamList([ ...filteredList ]);
+    setTeamList([...filteredList]);
   };
 
   return (
@@ -59,7 +59,7 @@ function App() {
           <Route
             path='/add-member'
             render={(props) => (
-              <Form
+              <TeamForm
                 {...props}
                 isEditable={isEditable}
                 setIsEditable={setIsEditable}
@@ -71,7 +71,7 @@ function App() {
           <Route
             path='/edit-member/:id'
             render={(props) => (
-              <Form
+              <TeamForm
                 {...props}
                 setIsEditable={setIsEditable}
                 isEditable={isEditable}
