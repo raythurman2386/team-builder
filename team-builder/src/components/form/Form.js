@@ -22,14 +22,11 @@ const TeamForm = (props, { errors, touched, status }) => {
   }
 
   // Handle submit
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
   //   if (props.teamList === []) {
   //     props.setTeamList([form]);
   //   } else {
   //     props.setTeamList([...props.teamList, form]);
   //   }
-
   //   if (props.isEditable) {
   //     props.setIsEditable(!props.isEditable);
   //     // filter then push
@@ -41,11 +38,6 @@ const TeamForm = (props, { errors, touched, status }) => {
   //   props.history.push('/');
   //   // resets form as soon as it's submit
   //   resetForm();
-  // };
-
-  // function to reset the form
-  // const resetForm = () => {
-  //   setForm(initialForm);
   // };
 
   return (
