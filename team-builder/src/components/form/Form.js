@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Form, Field, withFormik } from 'formik'
+import axios from 'axios'
 import * as Yup from 'yup'
 
 const TeamForm = (props, { errors, touched, status }) => {
@@ -9,10 +10,8 @@ const TeamForm = (props, { errors, touched, status }) => {
 
   // set the values to state from app
   useEffect(() => {
-    if (!status) {
-      return
-    } else {
-      props.setTeamList([...props.teamList, { id: Date.now(), ...status }])
+    if (status) {
+      props.setTeamList([...props.teamList, ...status])
     }
   }, [status])
 
@@ -49,7 +48,13 @@ export default withFormik({
   // handleSubmit
   handleSubmit(values, { setStatus }) {
     console.log(values)
-    setStatus({ ...values })
+    axios
+      .post('https://reqres.in/api/user', values)
+      .then(res => {
+        console.log(res)
+        setStatus(res.data)
+      })
+      .catch(err => console.log(err))
   },
 })(TeamForm)
 
