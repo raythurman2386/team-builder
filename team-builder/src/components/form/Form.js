@@ -5,10 +5,11 @@ import * as Yup from 'yup'
 
 const TeamForm = (props, { errors, touched, status }) => {
   const [formValues, setFormValues] = useState({})
+  console.log(status, 'status')
 
   // set the values to state from app
   useEffect(() => {
-    props.setTeamList([...props.teamList, { ...status, id: Date.now() }])
+    props.setTeamList([...props.teamList, { status, id: Date.now() }])
   }, [formValues])
 
   return (
@@ -17,7 +18,7 @@ const TeamForm = (props, { errors, touched, status }) => {
         <Input type='text' name='name' placeholder='Name' required />
         <Input type='email' name='email' placeholder='Email' required />
         <Input type='text' name='role' placeholder='Role' required />
-        <ButtonWrapper>Submit</ButtonWrapper>
+        <ButtonWrapper type='submit'>Submit</ButtonWrapper>
       </FormWrapper>
     </div>
   )
