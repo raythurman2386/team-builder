@@ -4,14 +4,13 @@ import { Form, Field, withFormik } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup'
 
-const TeamForm = (props, { errors, touched, status }) => {
-  const [formValues, setFormValues] = useState({})
+const TeamForm = ({ errors, touched, status, teamList, setTeamList }) => {
   console.log(status, 'status')
 
   // set the values to state from app
   useEffect(() => {
     if (status) {
-      props.setTeamList([...props.teamList, ...status])
+      setTeamList([...teamList, status])
     }
   }, [status])
 
