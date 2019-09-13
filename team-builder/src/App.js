@@ -33,6 +33,7 @@ function App() {
     }
   }, [])
 
+  // useEffect for updating local storage changes
   useEffect(() => {
     if (
       localStorage.getItem('teamList') &&
