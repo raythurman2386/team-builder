@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 // Team member
-import TeamMember from './TeamMember';
+import TeamMember from './TeamMember'
 
-const Team = (props) => {
+const Team = props => {
   return (
     <TeamWrapper>
       {props.teamList &&
@@ -17,10 +17,10 @@ const Team = (props) => {
           />
         ))}
     </TeamWrapper>
-  );
-};
+  )
+}
 
-export default Team;
+export default Team
 
 const TeamWrapper = styled.div`
   display: flex;
@@ -30,4 +30,4 @@ const TeamWrapper = styled.div`
   min-height: 20rem;
   margin: auto;
   width: 100%;
-`;
+`

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const TeamMember = (props) => {
+const TeamMember = props => {
   return (
     <TeamMemberCard>
       <h1>{props.member.name}</h1>
@@ -15,10 +15,10 @@ const TeamMember = (props) => {
         Delete
       </button>
     </TeamMemberCard>
-  );
-};
+  )
+}
 
-export default TeamMember;
+export default TeamMember
 
 const TeamMemberCard = styled.div`
   width: 400px;
@@ -29,7 +29,7 @@ const TeamMemberCard = styled.div`
   margin: 2rem auto;
   :hover {
     box-shadow: 0 10px 16px -6px #777;
-    transition: .4s ease;
+    transition: 0.4s ease;
   }
 
   h1 {
@@ -63,7 +63,7 @@ const TeamMemberCard = styled.div`
     :hover {
       color: #fdcb6e;
       border-bottom: 1px solid #fdcb6e;
-      transition: .5s ease;
+      transition: 0.5s ease;
     }
   }
-`;
+`
