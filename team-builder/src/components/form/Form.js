@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Form, Field, withFormik } from 'formik'
-import axios from 'axios'
+// import axios from 'axios'
 import * as Yup from 'yup'
 
 const TeamForm = ({
@@ -59,14 +59,8 @@ export default withFormik({
 
   // handleSubmit
   handleSubmit(values, { setStatus }) {
-    console.log(values)
-    axios
-      .post('https://reqres.in/api/user', values)
-      .then(res => {
-        console.log(res)
-        setStatus(res.data)
-      })
-      .catch(err => console.log(err))
+    // console.log(values)
+    setStatus(values)
   },
 })(TeamForm)
 
