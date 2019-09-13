@@ -6,14 +6,9 @@ import * as Yup from 'yup'
 const TeamForm = (props, { errors, touched, status }) => {
   const [formValues, setFormValues] = useState({})
 
-  // set the values and and id
-  useEffect(() => {
-    setFormValues({ ...status, id: Date.now() })
-  }, [status])
-
   // set the values to state from app
   useEffect(() => {
-    props.setTeamList([...props.teamList, formValues])
+    props.setTeamList([...props.teamList, { ...status, id: Date.now() }])
   }, [formValues])
 
   return (

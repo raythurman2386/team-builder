@@ -24,6 +24,10 @@ function App() {
     },
   ])
 
+  useEffect(() => {
+    console.log(teamList)
+  }, [teamList])
+
   // // Handler for the nav bar
   const handleNavbar = () => {
     setNavBarOpen(!navBarOpen)
