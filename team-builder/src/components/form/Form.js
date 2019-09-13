@@ -9,8 +9,12 @@ const TeamForm = (props, { errors, touched, status }) => {
 
   // set the values to state from app
   useEffect(() => {
-    props.setTeamList([...props.teamList, { status, id: Date.now() }])
-  }, [formValues])
+    if (!status) {
+      return
+    } else {
+      props.setTeamList([...props.teamList, { id: Date.now(), ...status }])
+    }
+  }, [status])
 
   return (
     <div>
@@ -45,7 +49,7 @@ export default withFormik({
   // handleSubmit
   handleSubmit(values, { setStatus }) {
     console.log(values)
-    setStatus(values)
+    setStatus({ ...values })
   },
 })(TeamForm)
 
