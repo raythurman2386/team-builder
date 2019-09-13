@@ -8,6 +8,7 @@ import GlobalStyle from './styles/Global'
 import TeamForm from './components/form/Form'
 // Team
 import Team from './components/team/Team'
+import TeamPlaceholder from './components/team/TeamPlaceholder'
 
 function App() {
   // Hook for just the navbar
@@ -94,6 +95,7 @@ function App() {
               />
             )}
           />
+          <Route path='/no-members' component={TeamPlaceholder} />
         </Switch>
         <GlobalStyle />
       </Wrapper>
