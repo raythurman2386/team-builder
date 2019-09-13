@@ -19,7 +19,7 @@ function App() {
 
   // initial useEffect for local storage
   useEffect(() => {
-    if (teamList.length !== 0) {
+    if (teamList.length === 0) {
       if (localStorage.getItem('teamList')) {
         setTeamList(JSON.parse(localStorage.getItem('teamList')))
       }
