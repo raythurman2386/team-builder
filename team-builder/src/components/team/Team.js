@@ -6,7 +6,7 @@ import TeamMember from './TeamMember'
 
 const Team = props => {
   if (props.teamList.length === 0) {
-    return <div>I'm sorry</div>
+    props.history.push('/no-members')
   }
 
   return (
