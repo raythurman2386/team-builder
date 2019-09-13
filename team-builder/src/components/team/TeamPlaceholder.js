@@ -1,11 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useSpring, animated, config } from 'react-spring'
 
 import image from '../../assets/workers-team.svg'
 
 const TeamPlaceholder = () => {
+  // Sets up the page load animation
+  const teamAnimation = useSpring({
+    from: { opacity: 0 },
+    opacity: 1,
+    delay: 800,
+  })
+
   return (
-    <Wrapper>
+    <Wrapper style={teamAnimation}>
       <img src={image} alt='One Team' />
       <h1>Oh dear! It appears you don't have a team!</h1>
       <p>How about adding your team members?</p>
@@ -15,7 +23,7 @@ const TeamPlaceholder = () => {
 
 export default TeamPlaceholder
 
-const Wrapper = styled.div`
+const Wrapper = styled(animated.div)`
   width: 100%;
   text-align: center;
   display: flex;
