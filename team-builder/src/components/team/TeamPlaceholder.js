@@ -10,6 +10,7 @@ const TeamPlaceholder = () => {
     from: { opacity: 0 },
     opacity: 1,
     delay: 800,
+    config: config.gentle,
   })
 
   return (

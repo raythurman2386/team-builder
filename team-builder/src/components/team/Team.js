@@ -1,16 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useSpring, animated, config } from 'react-spring'
 
 // Team member
 import TeamMember from './TeamMember'
 
 const Team = props => {
+  // Sets up the page load animation
+  const cardAnimation = useSpring({
+    from: { opacity: 0 },
+    opacity: 1,
+    delay: 400,
+    config: config.gentle,
+  })
+
   if (props.teamList.length === 0) {
     props.history.push('/no-members')
   }
 
   return (
-    <TeamWrapper>
+    <TeamWrapper style={cardAnimation}>
       {props.teamList &&
         props.teamList.map((team, index) => (
           <TeamMember
@@ -26,7 +35,7 @@ const Team = props => {
 
 export default Team
 
-const TeamWrapper = styled.div`
+const TeamWrapper = styled(animated.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
