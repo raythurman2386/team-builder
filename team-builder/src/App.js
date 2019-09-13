@@ -15,14 +15,7 @@ function App() {
   // hook for editable
   const [isEditable, setIsEditable] = useState(false)
   // List for the team members
-  const [teamList, setTeamList] = useState([
-    {
-      id: Date.now(),
-      name: 'Ray',
-      email: 'raythurman2386@somewhere.com',
-      role: 'frontend',
-    },
-  ])
+  const [teamList, setTeamList] = useState([])
 
   // initial useEffect for local storage
   useEffect(() => {
