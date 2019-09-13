@@ -4,21 +4,35 @@ import { Form, Field, withFormik } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup'
 
-const TeamForm = ({ errors, touched, status, teamList, setTeamList }) => {
+const TeamForm = ({
+  errors,
+  touched,
+  status,
+  teamList,
+  setTeamList,
+  history,
+}) => {
   console.log(status, 'status')
 
   // set the values to state from app
   useEffect(() => {
     if (status) {
       setTeamList([...teamList, status])
+      history.push('/')
     }
   }, [status])
 
   return (
     <div>
       <FormWrapper>
+        {/* Custom Errors */}
+        {touched.name && errors.name && <p>{errors.name}</p>}
         <Input type='text' name='name' placeholder='Name' required />
+
+        {touched.email && errors.email && <p>{errors.email}</p>}
         <Input type='email' name='email' placeholder='Email' required />
+
+        {touched.rol && errors.role && <p>{errors.role}</p>}
         <Input type='text' name='role' placeholder='Role' required />
         <ButtonWrapper type='submit'>Submit</ButtonWrapper>
       </FormWrapper>
