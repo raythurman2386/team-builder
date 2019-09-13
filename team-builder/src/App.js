@@ -24,8 +24,24 @@ function App() {
     },
   ])
 
+  // initial useEffect for local storage
   useEffect(() => {
-    console.log(teamList)
+    if (teamList.length === 0) {
+      if (localStorage.getItem('teamList')) {
+        setTeamList(JSON.parse(localStorage.getItem('teamList')))
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (
+      localStorage.getItem('teamList') &&
+      JSON.parse(localStorage.getItem('teamList').length !== teamList.length)
+    ) {
+      localStorage.setItem('teamList', JSON.stringify(teamList))
+    } else {
+      localStorage.setItem('teamList', JSON.stringify(teamList))
+    }
   }, [teamList])
 
   // // Handler for the nav bar
