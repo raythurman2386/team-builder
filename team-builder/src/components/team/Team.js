@@ -5,6 +5,10 @@ import styled from 'styled-components'
 import TeamMember from './TeamMember'
 
 const Team = props => {
+  if (props.teamList.length === 0) {
+    return <div>I'm sorry</div>
+  }
+
   return (
     <TeamWrapper>
       {props.teamList &&
