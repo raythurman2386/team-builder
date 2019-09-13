@@ -39,7 +39,7 @@ function App() {
   }
 
   const handleDelete = id => {
-    let filteredList = teamList.filter(member => !member.id)
+    let filteredList = teamList.filter(member => member.id !== id)
     setTeamList([...filteredList])
   }
 
