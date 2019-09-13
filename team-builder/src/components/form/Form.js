@@ -5,6 +5,7 @@ import { Form, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 
 const TeamForm = ({
+  values,
   errors,
   touched,
   status,
@@ -13,10 +14,11 @@ const TeamForm = ({
   history,
   match,
 }) => {
+  // console.log(values, 'testing values')
   // set the values to state from app
   useEffect(() => {
     if (status) {
-      setTeamList([...teamList, status])
+      setTeamList([...teamList, { id: Date.now(), ...status }])
       history.push('/')
     }
   }, [status])
