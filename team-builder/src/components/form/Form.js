@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Form, Field, withFormik } from 'formik'
 import axios from 'axios'
@@ -11,9 +11,8 @@ const TeamForm = ({
   teamList,
   setTeamList,
   history,
+  match,
 }) => {
-  console.log(status, 'status')
-
   // set the values to state from app
   useEffect(() => {
     if (status) {
@@ -32,7 +31,7 @@ const TeamForm = ({
         {touched.email && errors.email && <p>{errors.email}</p>}
         <Input type='email' name='email' placeholder='Email' required />
 
-        {touched.rol && errors.role && <p>{errors.role}</p>}
+        {touched.role && errors.role && <p>{errors.role}</p>}
         <Input type='text' name='role' placeholder='Role' required />
         <ButtonWrapper type='submit'>Submit</ButtonWrapper>
       </FormWrapper>
@@ -51,11 +50,11 @@ export default withFormik({
 
   // Validation
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
+    name: Yup.string().required('Please provide your name.'),
     email: Yup.string()
-      .email()
+      .email('Please provide your email.')
       .required(),
-    role: Yup.string().required(),
+    role: Yup.string().required('Please provide your role.'),
   }),
 
   // handleSubmit
