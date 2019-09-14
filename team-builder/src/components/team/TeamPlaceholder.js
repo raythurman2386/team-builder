@@ -7,10 +7,10 @@ import image from '../../assets/workers-team.svg'
 const TeamPlaceholder = () => {
   // Sets up the page load animation
   const teamAnimation = useSpring({
-    from: { opacity: 0 },
-    opacity: 1,
+    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 800,
-    config: config.gentle,
+    config: config.wobbly,
   })
 
   return (
