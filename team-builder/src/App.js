@@ -1,43 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { Route, Switch } from 'react-router-dom'
 // Components
-import Navbar from './components/navbar/Navbar';
-import GlobalStyle from './styles/Global';
+import Navbar from './components/navbar/Navbar'
+import GlobalStyle from './styles/Global'
 // Form
-import TeamForm from './components/form/Form';
+import TeamForm from './components/form/Form'
 // Team
-import Team from './components/team/Team';
+import Team from './components/team/Team'
+import TeamPlaceholder from './components/team/TeamPlaceholder'
 
 function App() {
   // Hook for just the navbar
-  const [navBarOpen, setNavBarOpen] = useState(false);
+  const [navBarOpen, setNavBarOpen] = useState(false)
   // hook for editable
-  const [isEditable, setIsEditable] = useState(false);
+  const [isEditable, setIsEditable] = useState(false)
   // List for the team members
-  const [teamList, setTeamList] = useState([
-    {
-      id: 1,
-      name: 'Ray',
-      email: 'raythurman2386@somewhere.com',
-      role: 'frontend',
-    },
-  ]);
+  const [teamList, setTeamList] = useState([])
+
+  // initial useEffect for local storage
+  useEffect(() => {
+    if (teamList.length === 0) {
+      if (localStorage.getItem('teamList')) {
+        setTeamList(JSON.parse(localStorage.getItem('teamList')))
+      }
+    }
+  }, [])
+
+  // useEffect for updating local storage changes
+  useEffect(() => {
+    if (
+      localStorage.getItem('teamList') &&
+      JSON.parse(localStorage.getItem('teamList').length !== teamList.length)
+    ) {
+      localStorage.setItem('teamList', JSON.stringify(teamList))
+    } else {
+      localStorage.setItem('teamList', JSON.stringify(teamList))
+    }
+  }, [teamList])
 
   // // Handler for the nav bar
   const handleNavbar = () => {
-    setNavBarOpen(!navBarOpen);
-  };
+    setNavBarOpen(!navBarOpen)
+  }
 
   // Handler for the Edit
   const handleEdit = () => {
-    setIsEditable(!isEditable);
-  };
+    setIsEditable(!isEditable)
+  }
 
-  const handleDelete = (id) => {
-    let filteredList = teamList.filter((member) => member.id !== id);
-    setTeamList([...filteredList]);
-  };
+  const handleDelete = id => {
+    let filteredList = teamList.filter(member => member.id !== id)
+    setTeamList([...filteredList])
+  }
 
   return (
     <div className='App'>
@@ -47,7 +62,7 @@ function App() {
           <Route
             exact
             path='/'
-            render={(props) => (
+            render={props => (
               <Team
                 {...props}
                 teamList={teamList}
@@ -58,7 +73,7 @@ function App() {
           />
           <Route
             path='/add-member'
-            render={(props) => (
+            render={props => (
               <TeamForm
                 {...props}
                 isEditable={isEditable}
@@ -70,7 +85,7 @@ function App() {
           />
           <Route
             path='/edit-member/:id'
-            render={(props) => (
+            render={props => (
               <TeamForm
                 {...props}
                 setIsEditable={setIsEditable}
@@ -80,16 +95,17 @@ function App() {
               />
             )}
           />
+          <Route path='/no-members' component={TeamPlaceholder} />
         </Switch>
         <GlobalStyle />
       </Wrapper>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 
 const Wrapper = styled.div`
   max-width: 1120px;
   margin: 60px auto 0;
-`;
+`

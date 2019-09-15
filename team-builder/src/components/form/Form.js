@@ -1,71 +1,45 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import { Form, Field, withFormik } from 'formik'
+// import axios from 'axios'
 import * as Yup from 'yup'
 
-const TeamForm = (props, { errors, touched, status }) => {
-  let id = 1 || props.teamList.length + 1;
-  // make an initial team to reset the form to
-  let initialForm;
-  if (!props.isEditable) {
-    initialForm = { id: id, name: '', email: '', role: '' };
-  } else {
-    const member = props.teamList.find((teamMember) => {
-      return teamMember.id === Number(props.match.params.id);
-    });
-    initialForm = {
-      id: member.id,
-      name: member.name,
-      email: member.email,
-      role: member.role,
-    };
-  }
-
-  // Handle submit
-  //   if (props.teamList === []) {
-  //     props.setTeamList([form]);
-  //   } else {
-  //     props.setTeamList([...props.teamList, form]);
-  //   }
-  //   if (props.isEditable) {
-  //     props.setIsEditable(!props.isEditable);
-  //     // filter then push
-  //     let filteredList = props.teamList.filter((item) => item.id !== form.id);
-  //     // Set the edited form to the new list
-  //     props.setTeamList([...filteredList, form]);
-  //   }
-  //   // route to the homepage on submit
-  //   props.history.push('/');
-  //   // resets form as soon as it's submit
-  //   resetForm();
-  // };
+const TeamForm = ({
+  values,
+  errors,
+  touched,
+  status,
+  teamList,
+  setTeamList,
+  history,
+  match,
+}) => {
+  // console.log(values, 'testing values')
+  // set the values to state from app
+  useEffect(() => {
+    if (status) {
+      setTeamList([...teamList, { id: Date.now(), ...status }])
+      history.push('/')
+    }
+  }, [status])
 
   return (
     <div>
       <FormWrapper>
-        <Input
-          type='text'
-          name='name'
-          placeholder='Name'
-          required
-        />
-        <Input
-          type='email'
-          name='email'
-          placeholder='Email'
-          required
-        />
-        <Input
-          type='text'
-          name='role'
-          placeholder='Role'
-          required
-        />
-        <ButtonWrapper>Submit</ButtonWrapper>
+        {/* Custom Errors */}
+        {touched.name && errors.name && <p>{errors.name}</p>}
+        <Input type='text' name='name' placeholder='Name' required />
+
+        {touched.email && errors.email && <p>{errors.email}</p>}
+        <Input type='email' name='email' placeholder='Email' required />
+
+        {touched.role && errors.role && <p>{errors.role}</p>}
+        <Input type='text' name='role' placeholder='Role' required />
+        <ButtonWrapper type='submit'>Submit</ButtonWrapper>
       </FormWrapper>
     </div>
-  );
-};
+  )
+}
 
 export default withFormik({
   mapPropsToValues: ({ name, email, role }) => {
@@ -78,24 +52,26 @@ export default withFormik({
 
   // Validation
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
-    email: Yup.string().email().required(),
-    role: Yup.string().required(),
+    name: Yup.string().required('Please provide your name.'),
+    email: Yup.string()
+      .email('Please provide your email.')
+      .required(),
+    role: Yup.string().required('Please provide your role.'),
   }),
 
   // handleSubmit
   handleSubmit(values, { setStatus }) {
-    console.log(values)
+    // console.log(values)
     setStatus(values)
-  }
-})(TeamForm);
+  },
+})(TeamForm)
 
 const FormWrapper = styled(Form)`
   display: flex;
   flex-direction: column;
   margin: auto;
   align-items: center;
-`;
+`
 
 const Input = styled(Field)`
   margin: 10px 0;
@@ -106,7 +82,7 @@ const Input = styled(Field)`
   width: 60%;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
-`;
+`
 
 const ButtonWrapper = styled.button`
   cursor: pointer;
@@ -121,4 +97,4 @@ const ButtonWrapper = styled.button`
     box-shadow: 0 -1px 10px #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
       0 2px 10px rgba(0, 0, 0, 0.24);
   }
-`;
+`
