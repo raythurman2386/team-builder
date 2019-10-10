@@ -18,7 +18,7 @@ function App() {
   // hook for editable
   const [isEditable, setIsEditable] = useState(false)
   // List for the team members
-  const [teamList, setTeamList] = useLocalStorage('team', [])
+  const [teamList, setTeamList, handleDelete] = useLocalStorage('team', [])
 
   // // Handler for the nav bar
   const handleNavbar = () => {
@@ -28,11 +28,6 @@ function App() {
   // Handler for the Edit
   const handleEdit = () => {
     setIsEditable(!isEditable)
-  }
-
-  const handleDelete = id => {
-    let filteredList = teamList.filter(member => member.id !== id)
-    setTeamList([...filteredList])
   }
 
   return (
