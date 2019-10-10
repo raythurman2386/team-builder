@@ -9,6 +9,8 @@ import TeamForm from './components/form/Form'
 // Team
 import Team from './components/team/Team'
 import TeamPlaceholder from './components/team/TeamPlaceholder'
+// Hooks
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 function App() {
   // Hook for just the navbar
@@ -16,28 +18,7 @@ function App() {
   // hook for editable
   const [isEditable, setIsEditable] = useState(false)
   // List for the team members
-  const [teamList, setTeamList] = useState([])
-
-  // initial useEffect for local storage
-  useEffect(() => {
-    if (teamList.length === 0) {
-      if (localStorage.getItem('teamList')) {
-        setTeamList(JSON.parse(localStorage.getItem('teamList')))
-      }
-    }
-  }, [])
-
-  // useEffect for updating local storage changes
-  useEffect(() => {
-    if (
-      localStorage.getItem('teamList') &&
-      JSON.parse(localStorage.getItem('teamList').length !== teamList.length)
-    ) {
-      localStorage.setItem('teamList', JSON.stringify(teamList))
-    } else {
-      localStorage.setItem('teamList', JSON.stringify(teamList))
-    }
-  }, [teamList])
+  const [teamList, setTeamList] = useLocalStorage('team', [])
 
   // // Handler for the nav bar
   const handleNavbar = () => {
