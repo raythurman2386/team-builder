@@ -11,5 +11,11 @@ export const useLocalStorage = (key, initialValue) => {
     window.localStorage.setItem(key, JSON.stringify(value))
   }
 
-  return [storedValue, setValue]
+  const handleDelete = id => {
+    let filteredList = storedValue.filter(item => item.id !== id)
+
+    setValue(filteredList)
+  }
+
+  return [storedValue, setValue, handleDelete]
 }
