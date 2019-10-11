@@ -6,10 +6,10 @@ import image from '../../assets/workers-team.svg'
 import { useAnimation } from '../../hooks/useAnimation'
 
 const TeamPlaceholder = () => {
-  const [teamAnimation] = useAnimation()
+  const { linkAnimation } = useAnimation()
 
   return (
-    <Wrapper style={teamAnimation}>
+    <Wrapper style={linkAnimation}>
       <img src={image} alt='One Team' />
       <h1>Oh dear! It appears you don't have a team!</h1>
       <p>How about adding your team members?</p>

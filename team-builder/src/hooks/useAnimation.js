@@ -17,5 +17,5 @@ export const useAnimation = () => {
     transform: 'translate3d(0, 0, 0)',
   })
 
-  return [linkAnimation, barAnimation]
+  return { linkAnimation, barAnimation }
 }

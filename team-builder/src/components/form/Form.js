@@ -13,7 +13,7 @@ const TeamForm = ({
   setTeamList,
   history,
 }) => {
-  const [formAnimation] = useAnimation()
+  const { linkAnimation } = useAnimation()
   // set the values to state from app
   useEffect(() => {
     if (status) {
@@ -26,7 +26,7 @@ const TeamForm = ({
   }, [status])
 
   return (
-    <Wrapper style={formAnimation}>
+    <Wrapper style={linkAnimation}>
       <FormWrapper>
         {/* Custom Errors */}
         {touched.name && errors.name && <p>{errors.name}</p>}

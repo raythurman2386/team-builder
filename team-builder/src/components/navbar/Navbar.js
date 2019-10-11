@@ -10,7 +10,7 @@ import CollapseMenu from './CollapseMenu'
 import { useAnimation } from '../../hooks/useAnimation'
 
 const Navbar = props => {
-  const [linkAnimation, barAnimation] = useAnimation()
+  const { linkAnimation, barAnimation } = useAnimation()
 
   return (
     <>

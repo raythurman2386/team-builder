@@ -7,14 +7,14 @@ import TeamMember from './TeamMember'
 import { useAnimation } from '../../hooks/useAnimation'
 
 const Team = props => {
-  const [cardAnimation] = useAnimation()
+  const { linkAnimation } = useAnimation()
 
   if (props.teamList.length === 0) {
     props.history.push('/no-members')
   }
 
   return (
-    <TeamWrapper style={cardAnimation}>
+    <TeamWrapper style={linkAnimation}>
       {props.teamList &&
         props.teamList.map((team, index) => (
           <TeamMember
