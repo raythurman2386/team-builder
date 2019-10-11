@@ -17,12 +17,15 @@ function App() {
   // hook for editable
   const [isEditable, setIsEditable] = useState(false)
   // List for the team members
-  const [teamList, setTeamList, handleDelete] = useLocalStorage('team', [])
+  const [teamList, setTeamList, handleDelete, handleEdit] = useLocalStorage(
+    'team',
+    [],
+  )
 
   // Handler for the Edit
-  const handleEdit = () => {
-    setIsEditable(!isEditable)
-  }
+  // const handleEdit = () => {
+  //   setIsEditable(!isEditable)
+  // }
 
   return (
     <div className='App'>
@@ -36,6 +39,7 @@ function App() {
               <Team
                 {...props}
                 teamList={teamList}
+                isEditable={isEditable}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
               />
@@ -48,18 +52,6 @@ function App() {
                 {...props}
                 isEditable={isEditable}
                 setIsEditable={setIsEditable}
-                teamList={teamList}
-                setTeamList={setTeamList}
-              />
-            )}
-          />
-          <Route
-            path='/edit-member/:id'
-            render={props => (
-              <TeamForm
-                {...props}
-                setIsEditable={setIsEditable}
-                isEditable={isEditable}
                 teamList={teamList}
                 setTeamList={setTeamList}
               />

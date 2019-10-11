@@ -5,12 +5,10 @@ import { Link } from 'react-router-dom'
 const TeamMember = props => {
   return (
     <TeamMemberCard>
-      <h1>{props.member.name}</h1>
+      <h1 contentEditable={props.isEditable}>{props.member.name}</h1>
       <h2>{props.member.email}</h2>
       <h3>{props.member.role}</h3>
-      <Link to={`/edit-member/${props.member.id}`} onClick={props.handleEdit}>
-        Edit
-      </Link>
+      <button onClick={() => props.handleEdit(props.member.id)}>Edit</button>
       <button onClick={() => props.handleDelete(props.member.id)}>
         Delete
       </button>
