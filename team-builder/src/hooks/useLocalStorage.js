@@ -12,17 +12,17 @@ export const useLocalStorage = (key, initialValue) => {
   }
 
   const handleEdit = id => {
-    const checkEdits = storedValue.map(item => {
+    const checkValues = storedValue.map(item => {
       if (item.id === id) {
         return {
-          ...storedValue,
+          ...item,
           isEditable: !item.isEditable,
         }
       }
 
       return item
     })
-    localStorage.setItem(storedValue, JSON.stringify(checkEdits))
+    localStorage.setItem(storedValue, JSON.stringify(checkValues))
   }
 
   const handleDelete = id => {

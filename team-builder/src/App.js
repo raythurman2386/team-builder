@@ -14,8 +14,6 @@ import { useNavbar } from './hooks/useNavbar'
 function App() {
   // Hook for just the navbar
   const [navBarOpen, handleNavbar] = useNavbar()
-  // hook for editable
-  const [isEditable, setIsEditable] = useState(false)
   // List for the team members
   const [teamList, setTeamList, handleDelete, handleEdit] = useLocalStorage(
     'team',

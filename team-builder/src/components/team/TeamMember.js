@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 const TeamMember = props => {
   return (
     <TeamMemberCard>
-      <h1 contentEditable={props.isEditable}>{props.member.name}</h1>
+      <h1 contenteditable={props.member.isEditable}>{props.member.name}</h1>
       <h2>{props.member.email}</h2>
       <h3>{props.member.role}</h3>
       <button onClick={() => props.handleEdit(props.member.id)}>Edit</button>
