@@ -11,19 +11,15 @@ import Team from './components/team/Team'
 import TeamPlaceholder from './components/team/TeamPlaceholder'
 // Hooks
 import { useLocalStorage } from './hooks/useLocalStorage'
+import { useNavbar } from './hooks/useNavbar'
 
 function App() {
   // Hook for just the navbar
-  const [navBarOpen, setNavBarOpen] = useState(false)
+  const [navBarOpen, handleNavbar] = useNavbar()
   // hook for editable
   const [isEditable, setIsEditable] = useState(false)
   // List for the team members
   const [teamList, setTeamList, handleDelete] = useLocalStorage('team', [])
-
-  // // Handler for the nav bar
-  const handleNavbar = () => {
-    setNavBarOpen(!navBarOpen)
-  }
 
   // Handler for the Edit
   const handleEdit = () => {
