@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Form, Field, withFormik } from 'formik'
-// import axios from 'axios'
+import { animated } from 'react-spring'
 import * as Yup from 'yup'
+import { useAnimation } from '../../hooks/useAnimation'
 
 const TeamForm = ({
   errors,
@@ -12,7 +13,7 @@ const TeamForm = ({
   setTeamList,
   history,
 }) => {
-  // console.log(values, 'testing values')
+  const [formAnimation] = useAnimation()
   // set the values to state from app
   useEffect(() => {
     if (status) {
@@ -25,7 +26,7 @@ const TeamForm = ({
   }, [status])
 
   return (
-    <div>
+    <Wrapper style={formAnimation}>
       <FormWrapper>
         {/* Custom Errors */}
         {touched.name && errors.name && <p>{errors.name}</p>}
@@ -38,7 +39,7 @@ const TeamForm = ({
         <Input type='text' name='role' placeholder='Role' required />
         <ButtonWrapper type='submit'>Submit</ButtonWrapper>
       </FormWrapper>
-    </div>
+    </Wrapper>
   )
 }
 
@@ -66,6 +67,11 @@ export default withFormik({
     setStatus(values)
   },
 })(TeamForm)
+
+const Wrapper = styled(animated.div)`
+  max-width: 1120px;
+  margin: 60px auto 0;
+`
 
 const FormWrapper = styled(Form)`
   display: flex;
