@@ -44,7 +44,6 @@ const TeamMemberCard = styled.div`
     font-size: 2rem;
   }
 
-  a,
   button {
     padding: 6px 12px;
     margin-left: 10px;
