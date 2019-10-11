@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
 // Components
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
-// Form
 import TeamForm from './components/form/Form'
-// Team
 import Team from './components/team/Team'
 import TeamPlaceholder from './components/team/TeamPlaceholder'
 // Hooks
