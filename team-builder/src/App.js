@@ -20,11 +20,6 @@ function App() {
     [],
   )
 
-  // Handler for the Edit
-  // const handleEdit = () => {
-  //   setIsEditable(!isEditable)
-  // }
-
   return (
     <div className='App'>
       <Navbar navbarState={navBarOpen} handleNavbar={handleNavbar} />
@@ -37,7 +32,6 @@ function App() {
               <Team
                 {...props}
                 teamList={teamList}
-                isEditable={isEditable}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
               />
@@ -48,8 +42,6 @@ function App() {
             render={props => (
               <TeamForm
                 {...props}
-                isEditable={isEditable}
-                setIsEditable={setIsEditable}
                 teamList={teamList}
                 setTeamList={setTeamList}
               />
