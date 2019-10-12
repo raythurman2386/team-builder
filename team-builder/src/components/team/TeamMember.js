@@ -1,19 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-const TeamMember = props => {
+const TeamMember = ({ member, handleEdit, handleDelete }) => {
   return (
     <TeamMemberCard>
-      <h1>{props.member.name}</h1>
-      <h2>{props.member.email}</h2>
-      <h3>{props.member.role}</h3>
-      <Link to={`/edit-member/${props.member.id}`} onClick={props.handleEdit}>
-        Edit
-      </Link>
-      <button onClick={() => props.handleDelete(props.member.id)}>
-        Delete
-      </button>
+      <h1 contentEditable={member.isEditable}>{member.name}</h1>
+      <h2>{member.email}</h2>
+      <h3>{member.role}</h3>
+      <button onClick={() => handleEdit(member.id)}>Edit</button>
+      <button onClick={() => handleDelete(member.id)}>Delete</button>
     </TeamMemberCard>
   )
 }
@@ -49,7 +44,6 @@ const TeamMemberCard = styled.div`
     font-size: 2rem;
   }
 
-  a,
   button {
     padding: 6px 12px;
     margin-left: 10px;

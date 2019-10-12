@@ -1,25 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSpring, animated, config } from 'react-spring'
+import { animated } from 'react-spring'
 
 // Team member
 import TeamMember from './TeamMember'
+import { useAnimation } from '../../hooks/useAnimation'
 
 const Team = props => {
-  // Sets up the page load animation
-  const cardAnimation = useSpring({
-    from: { opacity: 0 },
-    opacity: 1,
-    delay: 400,
-    config: config.gentle,
-  })
+  const { linkAnimation } = useAnimation()
 
   if (props.teamList.length === 0) {
     props.history.push('/no-members')
   }
 
   return (
-    <TeamWrapper style={cardAnimation}>
+    <TeamWrapper style={linkAnimation}>
       {props.teamList &&
         props.teamList.map((team, index) => (
           <TeamMember

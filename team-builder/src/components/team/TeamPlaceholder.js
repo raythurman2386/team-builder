@@ -1,20 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSpring, animated, config } from 'react-spring'
+import { animated } from 'react-spring'
 
 import image from '../../assets/workers-team.svg'
+import { useAnimation } from '../../hooks/useAnimation'
 
 const TeamPlaceholder = () => {
-  // Sets up the page load animation
-  const teamAnimation = useSpring({
-    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
-    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 800,
-    config: config.wobbly,
-  })
+  const { linkAnimation } = useAnimation()
 
   return (
-    <Wrapper style={teamAnimation}>
+    <Wrapper style={linkAnimation}>
       <img src={image} alt='One Team' />
       <h1>Oh dear! It appears you don't have a team!</h1>
       <p>How about adding your team members?</p>

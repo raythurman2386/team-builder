@@ -1,58 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
 // Components
 import Navbar from './components/navbar/Navbar'
 import GlobalStyle from './styles/Global'
-// Form
 import TeamForm from './components/form/Form'
-// Team
 import Team from './components/team/Team'
 import TeamPlaceholder from './components/team/TeamPlaceholder'
+// Hooks
+import { useLocalStorage } from './hooks/useLocalStorage'
+import { useNavbar } from './hooks/useNavbar'
 
 function App() {
   // Hook for just the navbar
-  const [navBarOpen, setNavBarOpen] = useState(false)
-  // hook for editable
-  const [isEditable, setIsEditable] = useState(false)
+  const [navBarOpen, handleNavbar] = useNavbar()
   // List for the team members
-  const [teamList, setTeamList] = useState([])
-
-  // initial useEffect for local storage
-  useEffect(() => {
-    if (teamList.length === 0) {
-      if (localStorage.getItem('teamList')) {
-        setTeamList(JSON.parse(localStorage.getItem('teamList')))
-      }
-    }
-  }, [])
-
-  // useEffect for updating local storage changes
-  useEffect(() => {
-    if (
-      localStorage.getItem('teamList') &&
-      JSON.parse(localStorage.getItem('teamList').length !== teamList.length)
-    ) {
-      localStorage.setItem('teamList', JSON.stringify(teamList))
-    } else {
-      localStorage.setItem('teamList', JSON.stringify(teamList))
-    }
-  }, [teamList])
-
-  // // Handler for the nav bar
-  const handleNavbar = () => {
-    setNavBarOpen(!navBarOpen)
-  }
-
-  // Handler for the Edit
-  const handleEdit = () => {
-    setIsEditable(!isEditable)
-  }
-
-  const handleDelete = id => {
-    let filteredList = teamList.filter(member => member.id !== id)
-    setTeamList([...filteredList])
-  }
+  const [teamList, setTeamList, handleDelete, handleEdit] = useLocalStorage(
+    'team',
+    [],
+  )
 
   return (
     <div className='App'>
@@ -76,20 +42,6 @@ function App() {
             render={props => (
               <TeamForm
                 {...props}
-                isEditable={isEditable}
-                setIsEditable={setIsEditable}
-                teamList={teamList}
-                setTeamList={setTeamList}
-              />
-            )}
-          />
-          <Route
-            path='/edit-member/:id'
-            render={props => (
-              <TeamForm
-                {...props}
-                setIsEditable={setIsEditable}
-                isEditable={isEditable}
                 teamList={teamList}
                 setTeamList={setTeamList}
               />
